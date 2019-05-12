@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
 
+//StatelessWidget 상태가 없는 위젯 - 화면이 변경될 소지가 없는 위젯
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
