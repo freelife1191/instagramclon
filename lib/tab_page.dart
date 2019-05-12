@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:instagram_clon/account_page.dart';
 import 'package:instagram_clon/home_page.dart';
+import 'package:instagram_clon/search_page.dart';
 
 class TabPage extends StatefulWidget {
   @override
@@ -10,10 +11,10 @@ class TabPage extends StatefulWidget {
 class _TabPageState extends State<TabPage> {
   int _selectedIndex = 0;
 
-  // 페이지
+  // 텝으로 이동할 페이지 지정
   List _pages = [
-    HomePage(), //첫 텝에 홈페이지 지
-    Text('page2'),
+    HomePage(),
+    SearchPage(),
     AccountPage(),
   ];
   
