@@ -1,4 +1,4 @@
-# instagram_clon
+# instagramclon
 
 인스타그램 클론
 
