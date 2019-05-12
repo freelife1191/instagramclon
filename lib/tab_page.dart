@@ -11,24 +11,36 @@ class TabPage extends StatefulWidget {
   
   @override
   _TabPageState createState() => _TabPageState();
+  
 }
 
 class _TabPageState extends State<TabPage> {
   int _selectedIndex = 0;
 
-  // 텝으로 이동할 페이지 지정
-  List _pages = [
-    HomePage(),
-    SearchPage(),
-    AccountPage(),
-  ];
+  // 페이지
+  List _pages;
+
+  /**
+   * build 하기 전에 생성 다음에 호출되는 부분
+   * 초기화를 수행하는 부분
+   * widget 에 있는 데이터에 접근할 수 있다
+   */
+  @override
+  void initState() {
+    super.initState();
+    _pages = [
+      HomePage(widget.user), //home_page.dart
+      SearchPage(),
+      AccountPage(widget.user), //account_page.dart
+    ];
+  }
   
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(child: _pages[_selectedIndex]), //선택된 Tab index 확인
       bottomNavigationBar: BottomNavigationBar( //TabPage 아이콘 생성
-          fixedColor: Colors.black, //선택 됐을 때 블랙으로 변
+          fixedColor: Colors.black, //선택 됐을 때 블랙으로 변경
           onTap: _onItemTapped,
           currentIndex: _selectedIndex,
           items: <BottomNavigationBarItem>[

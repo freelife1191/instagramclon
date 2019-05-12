@@ -6,6 +6,10 @@ import 'package:flutter/material.dart';
  * Account 페이지
  */
 class AccountPage extends StatefulWidget {
+  final FirebaseUser user;
+  
+  AccountPage(this.user); // Firebase user 가져오도록 생성자
+  
   @override
   _AccountPageState createState() => _AccountPageState();
 }
@@ -14,8 +18,6 @@ class _AccountPageState extends State<AccountPage> {
   //구글 로그인 객체
   final GoogleSignIn _googleSignIn = GoogleSignIn();
   
-  int _postCount = 0;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,8 +55,8 @@ class _AccountPageState extends State<AccountPage> {
                     width: 80.0,
                     height: 80.0,
                     child: CircleAvatar( // 원형 이미지 넣을 수 있는 공간
-                       backgroundImage: NetworkImage('http://data.score888.com/data/photo/2017/04/296facc7e3671077dc8bc4b000c8452d_0322497a365891f8f21e954209e66dc4.gif'),
-//                      backgroundImage: NetworkImage(widget.user.photoUrl), // Firebase user 프로필 사진가져오기
+//                       backgroundImage: NetworkImage('http://data.score888.com/data/photo/2017/04/296facc7e3671077dc8bc4b000c8452d_0322497a365891f8f21e954209e66dc4.gif'),
+                      backgroundImage: NetworkImage(widget.user.photoUrl), // Firebase user 프로필 사진가져오기
                     ),
                   ),
                   Container( //오른쪽아래 정렬을 주기위해 컨테이너로 감쌈
@@ -88,13 +90,13 @@ class _AccountPageState extends State<AccountPage> {
               Padding(
                 padding: EdgeInsets.all(8.0), //이름과 원형 사진 사이의 간격 조정
               ),
-              Text('freelife', //'이름',
+              Text(widget.user.displayName, //'이름',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),
               )
             ],
           ),
           Text(
-              '$_postCount\n게시물',
+              '0\n게시물',
               textAlign: TextAlign.center, // textAlign 텍스트 속성 정렬
               style: TextStyle(fontSize: 18.0) // fontSize 주기
           ),
