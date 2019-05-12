@@ -19,7 +19,13 @@ samples, guidance on mobile development, and a full API reference.
 ## 파이어베이스 설정
 https://firebase.google.com/docs/android/setup?authuser=0
 
+### google-services.json 다운로드 및 붙여넣기
+android - app에 google-services.json 붙여넣기
+
 ### 구글 서비스 라이브러리 추가
+
+#### build.gradle 설정
+android - build.gradle dependencies에 라이브러리 추가
 classpath 'com.google.gms:google-services:4.2.0'
 
 ### 설정 추가
