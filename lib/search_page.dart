@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instagram_clon/create_page.dart';
 
 /**
  * Search Page
@@ -14,7 +15,10 @@ class _SearchPageState extends State<SearchPage> {
     return Scaffold(
       body: _buildBody(), // body  설정
       floatingActionButton: FloatingActionButton(
-        onPressed: null,
+        onPressed: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => CreatePage())); // 버튼 클릭시 CreatePage로 이동
+        },
         child: Icon(Icons.create),
         backgroundColor: Colors.blue, //플로팅 액션 버튼 색상 변경
       ),
