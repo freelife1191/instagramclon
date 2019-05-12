@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "290713749019",
+    "firebase_url": "https://instagram-clon-9654d.firebaseio.com",
+    "project_id": "instagram-clon-9654d",
+    "storage_bucket": "instagram-clon-9654d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:290713749019:android:5f71986e8fa5f5c5",
+        "android_client_info": {
+          "package_name": "me.freelife.instagramclon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "290713749019-3si7tob9oh0v7tjbe4r0vuru4bi744eu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "me.freelife.instagramclon",
+            "certificate_hash": "be7ac67f6c71085320f540eef59b271d5dbdcdaf"
+          }
+        },
+        {
+          "client_id": "290713749019-lbv6hp6losrhkbldkq4gbh0l66sje4mp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMXWqNaQI7wphCe1OF1zlsXCeaVrP-xm8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "290713749019-lbv6hp6losrhkbldkq4gbh0l66sje4mp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

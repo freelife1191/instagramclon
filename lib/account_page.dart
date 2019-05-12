@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter/material.dart';
 
 /**
@@ -9,6 +11,9 @@ class AccountPage extends StatefulWidget {
 }
 
 class _AccountPageState extends State<AccountPage> {
+  //구글 로그인 객체
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
+  
   int _postCount = 0;
 
   @override
@@ -24,7 +29,9 @@ class _AccountPageState extends State<AccountPage> {
       actions: <Widget>[
         IconButton(
           icon: Icon(Icons.exit_to_app),
-          onPressed: () { //로그아웃 버튼 처
+          onPressed: () { //로그아웃 버튼 처리
+            FirebaseAuth.instance.signOut(); // 파이어베이스 로그아웃 처리
+            _googleSignIn.signOut(); // 구글 로그아웃 처리
           },
         )
       ],

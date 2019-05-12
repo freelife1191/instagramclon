@@ -41,6 +41,7 @@ android {
         applicationId "me.freelife.instagramclon"
         minSdkVersion 21
         targetSdkVersion 28
+        multiDexEnabled true // 에러로 인해 설정 추가
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -64,4 +65,8 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    // Firebase dependencies 추가
+    implementation 'com.google.firebase:firebase-core:16.0.9'
 }
+// 구글 서비스 플러그인 적용 추가
+apply plugin: "com.google.gms.google-services"
