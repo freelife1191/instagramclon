@@ -40,6 +40,7 @@ class HelloPage extends StatefulWidget {
 class _HelloPageState extends State<HelloPage> {
   // _을 붙이면 private 지우면 public
   String _message = 'Hello World';
+  int _counter = 0;
   
   @override
   Widget build(BuildContext context) {
@@ -51,12 +52,23 @@ class _HelloPageState extends State<HelloPage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Text(_message, style: TextStyle(fontSize: 30)));
+        body: Center(
+            // 컬럼형태로 나열
+            child: Column(
+              //아래로 향하는 정렬을 센터
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(_message, style: TextStyle(fontSize: 30)),
+                Text('$_counter', style: TextStyle(fontSize: 30)),
+              ],
+            )
+        ));
   }
 
   void _changeMessage() {
     setState(() { // UI를 변경
       _message = '헬로 월드';
+      _counter++;
     });
   }
 }
