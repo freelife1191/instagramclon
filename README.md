@@ -1,6 +1,6 @@
-# instagramclon
+# instagram_clon
 
-A new Flutter application.
+인스타그램 클론
 
 ## Getting Started
 
