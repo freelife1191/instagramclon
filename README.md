@@ -70,3 +70,18 @@ Cloud FireStore 테스트 모드로 설정
 
 ### Firebase Storage
 Storage 시작하기 클릭 
+
+## ios 셋팅
+### Google 인증 동작 처리
+1. Runner에 GoogleService-info.plist 파일 붙여 넣기
+
+2. Runner - info - URL Types 추가하고 URL Schecmes 가 나오게 함
+
+3. GoogleService-info.plist 파일의 `REVERSED_CLIENT_ID` 복사해서 `URL Schecmes`에 붙여 넣기
+
+### XCode Build
+1. Podfile에 `platform :ios, '9.0'` 설정
+
+2. 터미널에서 `pod update` 명령어 실행해서 라이브러리 설치
+
+3. IOS Simulator 실행
