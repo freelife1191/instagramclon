@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,22 @@ class AccountPage extends StatefulWidget {
 class _AccountPageState extends State<AccountPage> {
   //구글 로그인 객체
   final GoogleSignIn _googleSignIn = GoogleSignIn();
+
+  // 게시물 카운트 변수
+  int _postCount = 0;
+  
+  @override
+  void initState() {
+    super.initState();
+    // post 이메일이 같으면 포스트 카운트 수를 가져옴
+    Firestore.instance.collection('post').where('email', isEqualTo: widget.user.email)
+        .getDocuments()
+        .then((snapShot) {
+      setState(() { //결과를 받았을 때 변하게 하기위해 setState 사용
+        _postCount = snapShot.documents.length;
+      });
+    });
+  }
   
   @override
   Widget build(BuildContext context) {
@@ -96,7 +113,7 @@ class _AccountPageState extends State<AccountPage> {
             ],
           ),
           Text(
-              '0\n게시물',
+              '$_postCount\n게시물', //FireStore에서 가져온 게시물 카운트 수
               textAlign: TextAlign.center, // textAlign 텍스트 속성 정렬
               style: TextStyle(fontSize: 18.0) // fontSize 주기
           ),

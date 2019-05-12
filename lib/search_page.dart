@@ -64,16 +64,21 @@ class _SearchPageState extends State<SearchPage> {
   
   // 사진을 가져와서 리턴해줌
   Widget _buildListItem(context, document) {
-    return InkWell( // 클릭이 되고 물방울이 퍼지는 효과
-      onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context){ //화면을 이동
-          return DetailPostPage(document); //상세 화면으로 document 넘겨줌
-        }));
-      },
-      child: Image.network(
-        // 'http://image.sportsseoul.com/2018/05/03/news/20180503153656_%EC%97%AC%EC%9E%9011.jpg',
-        document['photoUrl'], //document의 photoUrl키에 있는 데이터 가져오기
-        fit: BoxFit.cover
+    return Hero( //그림이 커지면서 애니메이션이 적용되는 효과
+      tag: document['photoUrl'],
+      child: Material( //뒤돌아갈때 오류 발생 방지
+        child: InkWell( // 클릭이 되고 물방울이 퍼지는 효과
+          onTap: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) { //화면을 이동
+              return DetailPostPage(document); //상세 화면으로 document 넘겨줌
+            }));
+          },
+          child: Image.network(
+            // 'http://image.sportsseoul.com/2018/05/03/news/20180503153656_%EC%97%AC%EC%9E%9011.jpg',
+              document['photoUrl'], //document의 photoUrl키에 있는 데이터 가져오기
+              fit: BoxFit.cover
+          ),
+        ),
       ),
     );
   }

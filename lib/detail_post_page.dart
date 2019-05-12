@@ -53,7 +53,9 @@ class DetailPostPage extends StatelessWidget {
               ),
             ),
             // 게시한 사진 출력
-            Image.network(document['photoUrl']),
+            Hero(//그림이 커지면서 애니메이션이 적용되는 효과
+                tag: document['photoUrl'], //search_page 에서 지정한 태그와 같은 태그를 지정
+                child: Image.network(document['photoUrl'])),
             // 게시글 출력
             Padding(
               padding: const EdgeInsets.all(8.0),
