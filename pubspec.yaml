@@ -25,6 +25,8 @@ dependencies:
   cupertino_icons: ^0.1.2
   # 이미지 피커 추가
   image_picker: ^0.5.4
+  # 플러터 로그인 버튼 추가
+  flutter_signin_button: ^0.2.8
 
 dev_dependencies:
   flutter_test:
