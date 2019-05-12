@@ -36,13 +36,27 @@ class HelloPage extends StatefulWidget {
   _HelloPageState createState() => _HelloPageState();
 }
 
+//실제 화면에 그리는 역할
 class _HelloPageState extends State<HelloPage> {
+  // _을 붙이면 private 지우면 public
+  String _message = 'Hello World';
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //플로팅 액션 버튼 생성
+      floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add), //ADD 아이콘 지정
+          onPressed: _changeMessage), //메세지 변경 메서드 호출
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Text(widget.title, style: TextStyle(fontSize: 30)));
+      body: Text(_message, style: TextStyle(fontSize: 30)));
+  }
+
+  void _changeMessage() {
+    setState(() { // UI를 변경
+      _message = '헬로 월드';
+    });
   }
 }
