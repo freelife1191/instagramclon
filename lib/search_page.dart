@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:instagramclon/create_page.dart';
+import 'package:instagramclon/detail_post_page.dart';
 
 /**
  * Search Page
@@ -63,10 +64,17 @@ class _SearchPageState extends State<SearchPage> {
   
   // 사진을 가져와서 리턴해줌
   Widget _buildListItem(context, document) {
-    return Image.network(
-      // 'http://image.sportsseoul.com/2018/05/03/news/20180503153656_%EC%97%AC%EC%9E%9011.jpg',
-      document['photoUrl'], //document의 photoUrl키에 있는 데이터 가져오기
-      fit: BoxFit.cover
+    return InkWell( // 클릭이 되고 물방울이 퍼지는 효과
+      onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context){ //화면을 이동
+          return DetailPostPage(document); //상세 화면으로 document 넘겨줌
+        }));
+      },
+      child: Image.network(
+        // 'http://image.sportsseoul.com/2018/05/03/news/20180503153656_%EC%97%AC%EC%9E%9011.jpg',
+        document['photoUrl'], //document의 photoUrl키에 있는 데이터 가져오기
+        fit: BoxFit.cover
+      ),
     );
   }
 }
