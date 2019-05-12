@@ -54,3 +54,19 @@ firebase_auth: ^0.8.4+5
 - 프로젝트 지원 이메얼 설정
 
 저장
+
+## Firebase Storage와 Firestore를 사용하여 게시물 업로드 하기
+
+### FireStore 에 저장하기 위한 설정
+pubspec.yaml 에 추가 
+
+#### Firebase 데이터베이스
+cloud_firestore: ^0.9.13+1
+#### 이미지를 업로드하기 위한 저장소
+firebase_storage: ^2.1.0+1
+
+### Firebase Database
+Cloud FireStore 테스트 모드로 설정
+
+### Firebase Storage
+Storage 시작하기 클릭 

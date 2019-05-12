@@ -1,7 +1,10 @@
 import 'dart:io';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 /**
  * Created by freelife1191.good@gmail.com on 10/03/2019
@@ -10,6 +13,10 @@ import 'package:image_picker/image_picker.dart';
  */
 
 class CreatePage extends StatefulWidget {
+  final FirebaseUser user;
+  
+  CreatePage(this.user);
+  
   @override
   _CreatePageState createState() => _CreatePageState();
 }
@@ -46,6 +53,34 @@ class _CreatePageState extends State<CreatePage> {
         IconButton(
           icon: Icon(Icons.send),
           onPressed: () {
+            final firebaseStorageRef = FirebaseStorage.instance
+                .ref() // 시작점
+                .child('post') //경로만들기
+                .child('${DateTime.now().millisecondsSinceEpoch}.png'); //저장할 이름 현재시간으로
+  
+            final task = firebaseStorageRef.putFile( //파일 업로드
+                _image, StorageMetadata(contentType: 'image/png')); //이미지, 스토리지 메타데이터 정보 인자
+  
+            //Future 로 리턴이 됨
+            task.onComplete.then((value) {  // Storage Task Snapshot 이 들어옴
+              var downloadUrl = value.ref.getDownloadURL(); // 다운로드 URL을 Future로 얻을 수 있음
+    
+              //다운로드 URL을 얻으면
+              downloadUrl.then((uri){
+                // Firestore 데이터베이스에 post라는 컬렉션을 만든다
+                var doc = Firestore.instance.collection('post').document();
+                doc.setData({ // 저장할 데이터 전송
+                  'id': doc.documentID,
+                  'photoUrl': uri.toString(), //URL 주소
+                  'contents': textEditingController.text, //컨트롤러를 통해 내용가져옴
+                  'email': widget.user.email,
+                  'displayName': widget.user.displayName,
+                  'userPhotoUrl': widget.user.photoUrl //유저 사진 URL
+                }).then((onValue) {
+                  Navigator.pop(context); //완료가 되면 화면을 닫기
+                });
+              });
+            });
           },
         )
       ],

@@ -30,7 +30,7 @@ class _TabPageState extends State<TabPage> {
     super.initState();
     _pages = [
       HomePage(widget.user), //home_page.dart
-      SearchPage(),
+      SearchPage(widget.user),
       AccountPage(widget.user), //account_page.dart
     ];
   }

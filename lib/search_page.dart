@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:instagramclon/create_page.dart';
 
@@ -5,6 +6,10 @@ import 'package:instagramclon/create_page.dart';
  * Search Page
  */
 class SearchPage extends StatefulWidget {
+  final FirebaseUser user;
+  
+  SearchPage(this.user);
+  
   @override
   _SearchPageState createState() => _SearchPageState();
 }
@@ -18,7 +23,7 @@ class _SearchPageState extends State<SearchPage> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(context,
-              MaterialPageRoute(builder: (context) => CreatePage())); // 버튼 클릭시 CreatePage로 이동
+              MaterialPageRoute(builder: (context) => CreatePage(widget.user))); // 버튼 클릭시 CreatePage로 이동
         },
         child: Icon(Icons.create),
         backgroundColor: Colors.blue, //플로팅 액션 버튼 색상 변경
