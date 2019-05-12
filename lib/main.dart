@@ -21,11 +21,28 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('헬로 월드'),
-        ),
-          body: Text('헬로 월드', style: TextStyle(fontSize: 30),)),
+      home: HelloPage('Hello World'),
     );
+  }
+}
+
+// stful을 입력해 상태를 가질 수 있는 위젯을 만드는 기본 형태 생성
+class HelloPage extends StatefulWidget {
+  final String title;
+
+  HelloPage(this.title);
+
+  @override
+  _HelloPageState createState() => _HelloPageState();
+}
+
+class _HelloPageState extends State<HelloPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      body: Text(widget.title, style: TextStyle(fontSize: 30)));
   }
 }
